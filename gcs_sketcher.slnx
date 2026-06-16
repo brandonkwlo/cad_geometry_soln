@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="DataModel/DataModel.vcxproj" />
+  <Project Path="gcs_sketcher/gcs_sketcher.vcxproj" />
+  <Project Path="SolverTest/SolverTest.vcxproj" />
+</Solution>
