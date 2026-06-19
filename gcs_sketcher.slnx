@@ -1,8 +1,0 @@
-<Solution>
-  <Configurations>
-    <Platform Name="x64" />
-    <Platform Name="x86" />
-  </Configurations>
-  <Project Path="DataModel/DataModel.vcxproj" Id="1f38cff0-7d85-4799-82e5-da368b2c0f09" />
-  <Project Path="SolverTest/SolverTest.vcxproj" Id="cd7ff523-c36b-462d-bc2d-546b44ea0a8e" />
-</Solution>
