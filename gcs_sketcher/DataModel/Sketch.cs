@@ -10,6 +10,10 @@ namespace DataModel
 {
     public class Sketch
     {
+        // Grid settings — used by a future visual layer for snapping
+        public bool   SnapToGrid  { get; set; } = false;
+        public double GridSpacing { get; set; } = 1.0;
+
         // All geometric entities in this sketch (points, lines, circles, arcs…)
         public List<Entity>     Entities    { get; set; } = new();
 

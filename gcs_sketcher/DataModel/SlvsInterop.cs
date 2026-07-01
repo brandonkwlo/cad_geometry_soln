@@ -97,5 +97,58 @@ namespace DataModel
         // Reads the solved value of a parameter by its handle.
         [DllImport(Dll, CallingConvention = CallingConvention.Cdecl, EntryPoint = "Slvs_GetParamValue")]
         public static extern double GetParamValue(uint ph);
+
+        // --- Curve entities ---
+
+        [DllImport(Dll, CallingConvention = CallingConvention.Cdecl, EntryPoint = "Slvs_AddNormal2D")]
+        public static extern SlvsEntity AddNormal2D(uint grouph, SlvsEntity workplane);
+
+        [DllImport(Dll, CallingConvention = CallingConvention.Cdecl, EntryPoint = "Slvs_AddDistance")]
+        public static extern SlvsEntity AddDistance(uint grouph, double value, SlvsEntity workplane);
+
+        [DllImport(Dll, CallingConvention = CallingConvention.Cdecl, EntryPoint = "Slvs_AddArc")]
+        public static extern SlvsEntity AddArc(uint grouph, SlvsEntity normal, SlvsEntity center,
+                                               SlvsEntity start, SlvsEntity end, SlvsEntity workplane);
+
+        // radius is a Distance entity returned by AddDistance.
+        [DllImport(Dll, CallingConvention = CallingConvention.Cdecl, EntryPoint = "Slvs_AddCircle")]
+        public static extern SlvsEntity AddCircle(uint grouph, SlvsEntity normal, SlvsEntity center,
+                                                  SlvsEntity radius, SlvsEntity workplane);
+
+        // --- Geometric constraints ---
+
+        [DllImport(Dll, CallingConvention = CallingConvention.Cdecl, EntryPoint = "Slvs_Perpendicular")]
+        public static extern SlvsConstraint Perpendicular(uint grouph, SlvsEntity entityA, SlvsEntity entityB,
+                                                          SlvsEntity workplane, int inverse);
+
+        // Pass default(SlvsEntity) for entityB when constraining a single line.
+        [DllImport(Dll, CallingConvention = CallingConvention.Cdecl, EntryPoint = "Slvs_Horizontal")]
+        public static extern SlvsConstraint Horizontal(uint grouph, SlvsEntity entityA,
+                                                       SlvsEntity workplane, SlvsEntity entityB);
+
+        [DllImport(Dll, CallingConvention = CallingConvention.Cdecl, EntryPoint = "Slvs_Vertical")]
+        public static extern SlvsConstraint Vertical(uint grouph, SlvsEntity entityA,
+                                                     SlvsEntity workplane, SlvsEntity entityB);
+
+        [DllImport(Dll, CallingConvention = CallingConvention.Cdecl, EntryPoint = "Slvs_Coincident")]
+        public static extern SlvsConstraint Coincident(uint grouph, SlvsEntity entityA, SlvsEntity entityB,
+                                                       SlvsEntity workplane);
+
+        // Constrains a circle or arc to a fixed diameter value.
+        [DllImport(Dll, CallingConvention = CallingConvention.Cdecl, EntryPoint = "Slvs_Diameter")]
+        public static extern SlvsConstraint Diameter(uint grouph, SlvsEntity entityA, double value);
+
+        [DllImport(Dll, CallingConvention = CallingConvention.Cdecl, EntryPoint = "Slvs_Equal")]
+        public static extern SlvsConstraint Equal(uint grouph, SlvsEntity entityA, SlvsEntity entityB,
+                                                  SlvsEntity workplane);
+
+        [DllImport(Dll, CallingConvention = CallingConvention.Cdecl, EntryPoint = "Slvs_Tangent")]
+        public static extern SlvsConstraint Tangent(uint grouph, SlvsEntity entityA, SlvsEntity entityB,
+                                                    SlvsEntity workplane);
+
+        // Constrains ptA to lie at the midpoint of line/arc ptB.
+        [DllImport(Dll, CallingConvention = CallingConvention.Cdecl, EntryPoint = "Slvs_Midpoint")]
+        public static extern SlvsConstraint Midpoint(uint grouph, SlvsEntity ptA, SlvsEntity ptB,
+                                                     SlvsEntity workplane);
     }
 }

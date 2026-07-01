@@ -16,7 +16,9 @@ namespace DataModel
         Circle           = 400,
         ArcOfCircle      = 500,
         TtfText          = 600,
-        Image            = 700
+        Image            = 700,
+        Ellipse          = 800,
+        PartialEllipse   = 900
     }
 
     public class Request

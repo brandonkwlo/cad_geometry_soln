@@ -44,7 +44,11 @@ namespace DataModel
         Circle              = 13000,
         ArcOfCircle         = 14000,
         TtfText             = 15000,
-        Image               = 16000
+        Image               = 16000,
+
+        // Not in SolveSpace natively; reserved for future approximation support
+        Ellipse             = 17000,
+        PartialEllipse      = 18000
     }
 
     public class EntityBase
